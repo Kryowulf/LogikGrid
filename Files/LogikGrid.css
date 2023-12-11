@@ -1,0 +1,156 @@
+/*
+    Available Classes:
+
+    LogikGrid_Table
+    LogikGrid_Spacer
+            
+    LogikGrid_TopCategoryHeaderRow
+    LogikGrid_TopEntityHeaderRow
+    
+    LogikGrid_SideCategoryHeader
+    LogikGrid_SideEntityHeader
+    
+    LogikGrid_CategoryTop
+    LogikGrid_CategoryLeft
+    LogikGrid_CategoryRight
+    LogikGrid_CategoryBottom
+    
+    LogikGrid_DataCell
+    
+    LogikGrid_Disabled
+
+    LogikGrid_SelectedRow
+    LogikGrid_SelectedColumn
+    
+    LogikGrid_CellHighlight0
+    LogikGrid_CellHighlight1
+    LogikGrid_CellHighlight2
+    LogikGrid_CellHighlight3
+*/
+
+/*
+    Header transformation adapted from:
+    http://jimmybonney.com/articles/column_header_rotation_css/
+*/
+
+
+.LogikGrid_Table {
+    white-space: nowrap;
+    border-collapse: collapse;
+    font-size: 12pt;
+}
+
+.LogikGrid_Table td {
+    margin: 0;
+    padding: 0;
+}
+
+.LogikGrid_Table th {
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.LogikGrid_Table .LogikGrid_DataCell {
+    border: 1px solid #DDDDDD;
+    text-align: center;
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+}
+
+.LogikGrid_Table .LogikGrid_TopCategoryHeaderRow {
+    display: none;
+}
+
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow th {
+    height: 120px;
+    width: 25px;
+    min-width: 25px;
+    max-width: 25px;
+    position: relative;
+    vertical-align: bottom;
+}
+
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow div {
+    position: relative;
+    top: 0px;
+    left: 60px;
+    height: 100%;
+    -ms-transform:skew(-45deg,0deg);
+    -moz-transform:skew(-45deg,0deg);
+    -webkit-transform:skew(-45deg,0deg);
+    -o-transform:skew(-45deg,0deg);
+    transform:skew(-45deg,0deg);
+    overflow: hidden;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+    border-top: 1px solid #DDDDDD;
+}
+
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow span {
+    -ms-transform:skew(45deg,0deg) rotate(315deg);
+    -moz-transform:skew(45deg,0deg) rotate(315deg);
+    -webkit-transform:skew(45deg,0deg) rotate(315deg);
+    -o-transform:skew(45deg,0deg) rotate(315deg);
+    transform:skew(45deg,0deg) rotate(315deg);
+    position: absolute;
+    bottom: 30px;
+    left: -30px;
+    display: inline-block;
+    width: 85px;
+    text-align: left;
+}
+
+.LogikGrid_Table .LogikGrid_SideCategoryHeader div {
+    width: 100px;
+    white-space: normal;
+    text-align: center;
+}
+
+.LogikGrid_Table .LogikGrid_SideEntityHeader div {
+    text-align: right;
+    width: 175px;
+}
+
+.LogikGrid_Table .LogikGrid_SideCategoryHeader {
+    border: 1px solid #DDDDDD;
+}
+
+.LogikGrid_Table .LogikGrid_SideEntityHeader {
+    border: 1px solid #DDDDDD;
+    padding-right: 5px;
+}
+
+
+
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_CategoryTop { border-top: 2px solid black; } 
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_CategoryLeft { border-left: 2px solid black; } 
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_CategoryRight { border-right: 2px solid black; } 
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_CategoryBottom { border-bottom: 2px solid black; } 
+
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_SelectedColumn { background: #EEEEFF; }
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_SelectedRow { background: #EEEEFF; }
+
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_Disabled { background: #AAAAAA; }
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_Disabled.LogikGrid_SelectedRow { background: #AAAABB; }
+.LogikGrid_Table .LogikGrid_DataCell.LogikGrid_Disabled.LogikGrid_SelectedColumn { background: #AAAABB; }
+
+.LogikGrid_Table .LogikGrid_SideCategoryHeader.LogikGrid_SelectedRow { background: #EEEEFF; }
+.LogikGrid_Table .LogikGrid_SideEntityHeader.LogikGrid_SelectedRow { background: #EEEEFF; }
+
+.LogikGrid_Table .LogikGrid_SideCategoryHeader { border: 2px solid black; }
+.LogikGrid_Table .LogikGrid_SideEntityHeader { border-left: 2px solid black; }
+.LogikGrid_Table .LogikGrid_SideEntityHeader.LogikGrid_CategoryTop { border-top: 2px solid black; } 
+.LogikGrid_Table .LogikGrid_SideEntityHeader.LogikGrid_CategoryBottom { border-bottom: 2px solid black; } 
+
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow div { border-top: 2px solid black; }
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow .LogikGrid_CategoryLeft>div { border-left: 2px solid black; }
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow .LogikGrid_CategoryRight>div { border-right: 2px solid black; }
+
+.LogikGrid_Table .LogikGrid_TopEntityHeaderRow .LogikGrid_SelectedColumn>div { background: #EEEEFF; }
+
+.LogikGrid_CellHighlight0 { font-size: 12pt; font-weight: bold; color: black; }
+.LogikGrid_CellHighlight1 { font-size: 14pt; font-weight: bold; color: blue; }
+.LogikGrid_CellHighlight2 { font-size: 14pt; font-weight: bold; color: green; }
+.LogikGrid_CellHighlight3 { font-size: 14pt; font-weight: bold; color: red; }

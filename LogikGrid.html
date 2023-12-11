@@ -1,0 +1,142 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type"></meta>
+    <meta content="utf-8" http-equiv="encoding"></meta>
+    <link rel="stylesheet" type="text/css" href="Files/LogikGrid.css"></link>
+    <script src="Files/jquery-1.11.3.js"></script>
+    <script src="Files/LogikGrid.js"></script>
+    <script>
+
+        var dimensions = {
+            total_categories: 4,
+            category_size: 4
+        };
+    
+        var gridobjects = {
+            grid: null,
+            controller: null,
+            view: null
+        };
+    
+        $(document).ready(function() {
+        
+            $("#next").click(function() {
+            
+                dimensions.total_categories = $("#total_categories").val();
+                dimensions.category_size = $("#category_size").val();
+            
+                var data_input_table = $("<table>");
+                
+                for ( var i = 0 ; i < dimensions.total_categories ; i++ )
+                {
+                    var row = $("<tr>");
+                    
+                    var category_input = 
+                        $("<input>")
+                        .attr("type", "text")
+                        .attr("data-category", true)
+                        .attr("data-category-index", i)
+                        .attr("data-entity-index", 0)
+                        .attr("style", "background: yellow; font-weight: bold; width: 150px;");
+                        
+                    row.append(category_input);
+                    
+                    for ( var j = 0 ; j < dimensions.category_size ; j++ )
+                    {
+                        var entity_input = 
+                            $("<input>")
+                            .attr("type", "text")
+                            .attr("data-entity", true)
+                            .attr("data-category-index", i)
+                            .attr("data-entity-index", j)
+                            .attr("style", "width: 150px;");
+
+                        row.append(entity_input);
+                    }
+                    
+                    data_input_table.append(row);
+                }
+            
+                $("#data_input_values").html(data_input_table);
+                $("#data_input").attr("style", "");
+                
+            });
+        
+            $("#make_grid").click(function() {
+                
+                var categories = [];
+                var category_index = 0;
+                var entity_index = 0;
+                var category_name = null;
+                var entity_name = null;
+                
+                $("input[data-category='true']").each(function(index, element) {
+                    category_index = $(element).attr("data-category-index");
+                    category_name = $(element).val();
+                    categories[category_index] = {name: category_name, entities: []};
+                });
+                
+                $("input[data-entity='true']").each(function(index, element) {
+                    category_index = $(element).attr("data-category-index");
+                    entity_index = $(element).attr("data-entity-index");
+                    entity_name = $(element).val();
+                    
+                    categories[category_index].entities[entity_index] = entity_name;
+                });
+                
+                gridobjects.grid = new LogikGrid.Grid(categories);
+                gridobjects.controller = new LogikGrid.GridController(gridobjects.grid);
+                gridobjects.view = new LogikGrid.GridView(gridobjects.controller);
+                
+                $("#grid_table_container").html(gridobjects.view.table);
+                $("#grid").attr("style", "");
+            });
+        
+            $("#undo").click(function() { gridobjects.controller.undo(); });
+            $("#redo").click(function() { gridobjects.controller.redo(); });
+        
+        });
+        
+    </script>
+</head>
+<body>
+
+    <div id="dimensions_input">
+        <table>
+            <tr>
+                <td>
+                    Categories:
+                </td>
+                <td>
+                    <input id="total_categories" type="number" value="4" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Category Size
+                </td>
+                <td>
+                    <input id="category_size" type="number" value="4" />
+                </td>
+            </tr>
+        </table>
+        <button id="next">Next</button>
+    </div>
+    
+    <div id="data_input" style="display: none">
+        <div id="data_input_values">
+        </div>
+        <button id="make_grid">Make Grid</button>
+    </div>
+    <br />
+    <div id="grid" style="display: none">
+        <div id="grid_table_container">
+        </div>
+        <br />
+        <button id="undo">Undo</button>
+        <button id="redo">Redo</button>
+    </div>
+    
+</body>
+</html>
