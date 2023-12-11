@@ -7,7 +7,7 @@ The figure below illustrates how to use it. You simply select the desired number
 
 *LogikGrid* offers several useful features including undo/redo buttons, row & column highlighting, automatic reflection, and automatic crossout. 
 
-[Click here to open LogikGrid](https://kryowulf.github.io/LogikGrid/LogikGrid.html)
+[Click here to open LogikGrid](https://kryowulf.github.io/LogikGrid/index.html)
 
 ---
 
