@@ -1,5 +1,5 @@
 
-# LogikGrid Readme
+# LogikGrid
 
 LogikGrid is a simple jquery-based webpage for creating an interactive grid to aid in solving Zebra-style logic puzzles.
 
